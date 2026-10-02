@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avenox Wiki</title>
+<meta name="description" content="Documentation of Avenox's Minecraft plugins: Valocraft and Avenox Duels.">
+<link rel="icon" href="https://cdn.modrinth.com/data/5AxXyQzL/39d04a022a5cfb4beb81c95012836130a1a9db6e.png">
+<script>try{var t=localStorage.getItem("vc-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--bg:#fff;--fg:#202122;--mut:#54595d;--bd:#c8ccd1;--side:#f8f9fa;--link:#3366cc;--acc:#e0404b;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#101418;--fg:#e4e6e8;--mut:#a2a9b1;--bd:#2f353c;--side:#171c21;--link:#6ea3ff;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#101418;--fg:#e4e6e8;--mut:#a2a9b1;--bd:#2f353c;--side:#171c21;--link:#6ea3ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+header{display:flex;align-items:center;gap:10px;padding:8px 16px;background:var(--side);border-bottom:1px solid var(--bd)}
+header b{font-size:17px}header .sp{flex:1}
+button{border:1px solid var(--bd);background:var(--bg);color:var(--fg);padding:4px 10px;cursor:pointer;border-radius:6px;font-size:14px}
+button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+main{flex:1;width:100%;max-width:900px;margin:0 auto;padding:48px 20px}
+h1{font-size:2.2em;margin:0 0 6px}p.sub{color:var(--mut);margin:0 0 32px;font-size:1.05em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px solid var(--bd);border-radius:10px;background:var(--side);transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--acc);transform:translateY(-2px)}
+.card .ic{width:48px;height:48px;border-radius:10px;object-fit:cover;display:grid;place-items:center;background:var(--acc);color:#fff;font-weight:700;font-size:22px}
+.card h2{margin:6px 0 0;font-size:1.2em}.card p{margin:0;color:var(--mut);flex:1}
+.tag{align-self:flex-start;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--bd);color:var(--mut)}
+.card.off{opacity:.6}
+.go{color:var(--link);font-weight:600}
+footer{border-top:1px solid var(--bd);padding:14px;text-align:center;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <b>Avenox Wiki</b><span class="sp"></span>
+  <button id="theme" aria-label="Theme" title="Light / Dark"></button>
+  <span><button data-l="en">EN</button><button data-l="fr">FR</button></span>
+</header>
+<main>
+  <h1>Avenox Wiki</h1>
+  <p class="sub" id="sub"></p>
+  <div class="grid" id="grid"></div>
+</main>
+<footer>© Avenox · Not affiliated with Riot Games or Mojang / Non affilié à Riot Games ni à Mojang</footer>
+<script>
+// ---- EDIT HERE: add a project by adding a line. Set ready:true once its wiki is online. ----
+const PROJECTS=[
+ {name:'Valocraft',href:'/valocraft/',ready:true,logo:'https://cdn.modrinth.com/data/5AxXyQzL/39d04a022a5cfb4beb81c95012836130a1a9db6e.png',
+  desc:{en:'Valorant in Minecraft: 15 agents, ultimates, matchmaking and spike mode.',fr:'Valorant dans Minecraft : 15 agents, ultimes, matchmaking et mode spike.'}},
+ {name:'Avenox Duels',href:'/duels/',ready:false,
+  desc:{en:'Documentation of the Avenox Duels plugin.',fr:'Documentation du plugin Avenox Duels.'}}
+];
+const T={en:{sub:'Documentation of our Minecraft plugins. Pick a project.',open:'Open the wiki →',soon:'Coming soon',tag:'Minecraft plugin'},
+         fr:{sub:'Documentation de nos plugins Minecraft. Choisissez un projet.',open:'Ouvrir le wiki →',soon:'Bientôt disponible',tag:'Plugin Minecraft'}};
+let lang=(()=>{try{var l=localStorage.getItem('vc-lang')}catch(e){}return l||((navigator.language||'en').toLowerCase().startsWith('fr')?'fr':'en')})();
+const $=s=>document.querySelector(s),mq=matchMedia('(prefers-color-scheme:dark)');
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function render(){
+  const t=T[lang];document.documentElement.lang=lang;$('#sub').textContent=t.sub;
+  $('#grid').innerHTML=PROJECTS.map(p=>{
+    const ic=p.logo?`<img class="ic" src="${p.logo}" alt="">`:`<div class="ic">${esc(p.name[0])}</div>`;
+    const inner=`${ic}<h2>${esc(p.name)}</h2><p>${esc(p.desc[lang])}</p><span class="${p.ready?'go':'tag'}">${p.ready?t.open:t.soon}</span>`;
+    return p.ready?`<a class="card" href="${p.href}">${inner}</a>`:`<div class="card off">${inner}</div>`}).join('');
+  document.querySelectorAll('[data-l]').forEach(b=>b.classList.toggle('on',b.dataset.l===lang));
+  document.title='Avenox Wiki';
+}
+const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':mq.matches};
+const paint=()=>{$('#theme').textContent=isDark()?'☀️':'🌙'};
+$('#theme').onclick=()=>{const t=isDark()?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('vc-theme',t)}catch(e){}paint()};
+document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem('vc-lang',lang)}catch(e){}render()});
+mq.addEventListener('change',paint);paint();render();
+</script>
+</body>
+</html>
