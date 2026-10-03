@@ -35,6 +35,18 @@ Weapons and charges are bought in the shop during the buy phase (`F`, or `/vc sh
 
 Recoil **never moves the player's view**. The server can only force an absolute camera orientation, which made the screen snap back during bursts. In 2.1 all recoil is applied to the **bullet path** instead.
 
+## Hold-to-fire (2.2)
+
+Hold left click while aiming at a block within 64 blocks to fire at the weapon's actual rate. Nothing is mined or damaged, and the swing animation is hidden. Semi-automatic weapons fire at their maximum rate while held. If no block is targeted within range, click to fire a single shot. See [Controls](page:controls) and [Configuration](page:configuration).
+
+## Skins
+
+The lobby shop sells six skin collections for all 18 weapons: Prime, Reaver, Glitchpop, Ion, Elderflame and Oni. Skins cost 1,000–2,000 Radianite, are purchased and equipped per weapon, and stay on weapons when their owner drops them. See [Lobby and Matchmaking](page:lobby).
+
+## Sniper scopes
+
+The Operator, Marshal and Outlaw use a fullscreen 16:9 scope with a clear circular lens, dark surround, fine reticle and red dot. It no longer flickers during inventory updates.
+
 ## Models
 
 - **HrdaValorant pack**: Classic, Ghost, Sheriff, Spectre, Vandal, Ares, Operator, Knife (and its `model-data` skins 2 to 15), shields.

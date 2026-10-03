@@ -62,6 +62,12 @@ Valocraft has **15 agents** in four roles. After the countdown, a **25 s agent s
 - **Flashes** turn vision **black**, not white.
 - The outline of **revealed** enemies is visible to **everyone**, not only the revealing team.
 
+## Agent appearance and smokes (2.2)
+
+Players wear their agent's head for the full match, including enemies whose names are hidden. Gekko and Harbor use similar replacement heads. Set `agents.wear-heads: false` to disable agent heads.
+
+Smokes and walls use opaque, tinted 3D models that remain visible at a distance and do not depend on the client's particle setting. An enemy inside or behind a smoke is hidden from your view at any distance. Players within 2.5 blocks can still see one another; allies and revealed enemies remain visible. Bullets still pass through smokes. Configure this with `agents.smokes-hide-players` and `agents.solid-smokes`.
+
 ## Balance
 
 Abilities have **not yet been balanced in real matches**. Feedback is welcome through GitHub issues. Server owners can tune damage, durations and prices in `AbilityType.java` and `Kits.java` (see [Development](page:development)).

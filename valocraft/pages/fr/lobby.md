@@ -10,6 +10,7 @@ Le point de spawn du lobby se définit avec `/vc setlobby` (admin). Les joueurs 
 | ⭐ **Rejoindre un match** (étoile) | Rejoint la partie en attente la plus remplie. **Accroupi + clic droit** : liste de toutes les parties. |
 | 📖 **Statistiques** (livre) | Tes stats (K/D, % de tirs à la tête, victoires, MVP, agent favori) et les classements. |
 | 🔨 **Créer une partie** (enclume) | Choisis une map libre et deviens l'**hôte**. |
+| 💎 **Boutique** | Dépenser de la Radianite pour débloquer des agents et acheter des skins. Aussi accessible avec `/vc boutique`. |
 
 Le lobby propose aussi une boussole « Jouer » (menu des parties et partie rapide), une salle d'attente par map, le choix d'équipe et un compte à rebours.
 
@@ -42,3 +43,7 @@ Les stats sont suivies par joueur et enregistrées dans `plugins/Valocraft/stats
 - MVP
 - Agent favori
 - Classements
+
+## Radianite et déblocages
+
+La Radianite est attribuée en fin de partie. Victoires, défaites, éliminations, assists, rounds gagnés et récompenses MVP contribuent au gain ; les montants sont configurables. Cinq agents (Phoenix, Jett, Sova, Brimstone et Sage) sont offerts par défaut ; chacun des dix autres coûte 1 000 ◆ par défaut. La boutique propose aussi six collections de skins pour les 18 armes. Les skins s'achètent et s'équipent arme par arme ; une arme ramassée garde le skin de son propriétaire. Un clic de confirmation est requis pour acheter. Les prix, gains et agents offerts se règlent dans `progression` de `config.yml`.

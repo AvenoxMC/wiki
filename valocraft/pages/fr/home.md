@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>Valorant dans Minecraft</b> : 15 agents, ultimes, tyroliennes, matchmaking et mode spike complet.<br>
-  Version <b>2.1 (Agent Update)</b> · Paper 1.21.4+ · Java 21
+  Version <b>2.2</b> · Paper 1.21.4+ · Java 21
 </p>
 
 
@@ -43,6 +43,7 @@
 | Tester les armes hors partie | [Stand de tir](page:practice-range) |
 | Résoudre un problème | [Dépannage](page:troubleshooting) |
 | Compiler ou contribuer | [Développement](page:development) |
+| Lire les notes de version | [Changelog](page:changelog) |
 
 ## ✨ Points forts
 
@@ -53,6 +54,8 @@
 - 🔫 **Armes hitscan** avec imprécision, recul, pénétration et modèles 3D
 - 🗺️ **Éditeur de maps en jeu** et import des maps Valorant d'Ommo
 - 📦 **Pack de textures auto-hébergé** servi sur le port Minecraft (compatible Pterodactyl)
+- 🗺️ **Cartes tactiques de ciblage**, scoreboard Tab et joueurs masqués par les fumées
+- 💎 **Progression en Radianite**, agents à débloquer et skins d'armes
 
 ## 🔗 Liens
 

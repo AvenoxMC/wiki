@@ -12,14 +12,15 @@
 
 ## Fresh install
 
-1. Put `Valocraft-2.1.jar` in the `plugins/` folder of your server.
+1. Put `Valocraft-2.2.jar` in the `plugins/` folder of your server.
 2. Start the server. The resource pack is extracted to `plugins/Valocraft/resourcepack.zip` on first start.
 3. Stand where you want the lobby and run `/vc setlobby`.
 4. [Create a map](page:map-setup) or [import one](page:importing-maps), then `/vc map enable <id>`.
 
 ## Updating
 
-- From **2.0.0**: delete `Valocraft-2.0.0.jar` from `plugins/` and drop in `Valocraft-2.1.jar`. Players get the updated resource pack automatically.
+- From **2.1**: replace `Valocraft-2.1.jar` with `Valocraft-2.2.jar` in `plugins/`. Players get the updated resource pack automatically, including the new weapon models and textures.
+- From **2.0.0**: replace the old jar with `Valocraft-2.2.jar`. Players get the updated resource pack automatically.
 - From **1.x**: 2.x is a full rewrite and shares nothing with 1.x. Remove the old plugin and its data, and start fresh.
 
 ## Resource pack

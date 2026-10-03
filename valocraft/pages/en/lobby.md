@@ -10,6 +10,7 @@ Set the lobby spawn with `/vc setlobby` (admin). Players return to it with `/vc 
 | ⭐ **Join a match** | Joins the fullest waiting game. **Sneak + right-click** lists all games. |
 | 📖 **Statistics** | Your K/D, headshot %, wins, MVPs, favourite agent, and the leaderboards. |
 | 🔨 **Create a game** | Pick a free map and become its **host**. |
+| 💎 **Shop** | Spend Radianite on agent unlocks and weapon skins. Also available with `/vc boutique`. |
 
 The lobby also offers a "Play" compass (games menu and quick match), a waiting room per map, team selection and a countdown.
 
@@ -42,3 +43,7 @@ Stats are tracked per player and stored in `plugins/Valocraft/stats.yml`:
 - MVPs
 - Favourite agent
 - Leaderboards
+
+## Radianite and unlocks
+
+Earn Radianite when a match ends. Wins, losses, kills, assists, rounds won and MVP awards contribute; the amount is configurable. Five agents (Phoenix, Jett, Sova, Brimstone and Sage) are free by default; each of the other ten costs 1,000 ◆ by default. The shop also offers six weapon-skin collections for all 18 weapons. Buy and equip skins per weapon; weapons picked up from another player keep their owner's skin. Purchases require a confirmation click. Server owners can configure prices, rewards and free agents under `progression` in `config.yml`.

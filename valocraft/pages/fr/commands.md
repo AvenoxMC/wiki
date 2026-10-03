@@ -11,6 +11,7 @@ La commande principale est `/vc`.
 | `/vc leave` | Quitter la partie |
 | `/vc list` | Lister les parties |
 | `/vc shop` | Ouvrir la boutique |
+| `/vc boutique` | Ouvrir la boutique de Radianite |
 | `/vc lobby` | Retour au lobby |
 | `/vc pack send` | (Re)recevoir le pack de textures |
 | `/vc pack remove` | Retirer le pack de textures |
@@ -29,6 +30,10 @@ La commande principale est `/vc`.
 | `/vc pack remove <joueur\|all>` | Retirer le pack de textures |
 | `/vc pack info` | Mode et lien du pack |
 | `/vc pack reload` | Recharger le pack après modification |
+| `/vc radianite give <joueur> <montant>` | Donner de la Radianite à un joueur |
+| `/vc radianite take <joueur> <montant>` | Retirer de la Radianite à un joueur |
+| `/vc radianite set <joueur> <montant>` | Fixer le solde de Radianite d'un joueur |
+| `/vc radianite voir <joueur>` | Consulter le solde de Radianite d'un joueur |
 | `/vc import list` | Afficher le catalogue de maps |
 | `/vc import <nom>` | Télécharger et installer une map ([Import de maps](page:importing-maps)) |
 
@@ -49,6 +54,8 @@ Voir [Création de map](page:map-setup) pour le déroulé.
 | `/vc map setmusic <id> <son>` | Musique de la map |
 | `/vc map addorb <id>` | Ajouter un orbe d'ultime à ta position |
 | `/vc map clearorbs <id>` | Retirer tous les orbes |
+| `/vc map setminimap <id>` | Définir la zone de la carte tactique avec la sélection de la baguette |
+| `/vc map clearminimap <id>` | Revenir au calcul automatique de la zone de la carte tactique |
 | `/vc map addzipline <id>` | Tyrolienne entre les deux points de la baguette |
 | `/vc map ziplines <id>` | Lister les tyroliennes |
 | `/vc map removezipline <id> <n>` | Retirer une tyrolienne |
@@ -61,3 +68,5 @@ Voir [Création de map](page:map-setup) pour le déroulé.
 |---|---|---|
 | `valocraft.play` | Tout le monde | Jouer à Valocraft |
 | `valocraft.admin` | Opérateurs | Commandes d'administration |
+| `valocraft.agents.all` | Opérateurs | Débloquer tous les agents |
+| `valocraft.skins.all` | Opérateurs | Débloquer tous les skins d'armes |

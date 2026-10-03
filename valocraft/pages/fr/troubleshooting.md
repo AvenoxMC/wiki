@@ -34,8 +34,12 @@ Les inventaires sauvegardés pendant une partie sont dans `plugins/Valocraft/pla
 
 ## J'ai mis à jour et quelque chose cloche
 
-- Retirer l'**ancien jar** (`Valocraft-2.0.0.jar`) pour ne garder que `Valocraft-2.1.jar`. Voir [Installation](page:installation).
+- Retirer l'ancien jar du plugin pour ne garder que `Valocraft-2.2.jar` dans `plugins/`. Voir [Installation](page:installation).
 - Valocraft **1.x** n'est pas compatible avec la 2.x.
+
+## Le tir ne continue pas quand je maintiens le clic gauche
+
+Le tir continu nécessite de viser un bloc à **64 blocs** ou moins. Si tu vises le ciel ou qu'aucun bloc n'est à portée, clique pour tirer une seule balle. Vérifie `controls.continuous-fire` et `controls.semi-auto-hold` dans `config.yml` ; voir [Contrôles](page:controls).
 
 ## Toujours bloqué ?
 

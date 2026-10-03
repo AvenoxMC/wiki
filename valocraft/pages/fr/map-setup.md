@@ -66,6 +66,7 @@ Sélectionner la zone avec la baguette, puis `/vc map addwall <id> [bloc]`. Le b
 
 - [Orbes d'ultime](page:ultimate) : `/vc map addorb <id>` / `/vc map clearorbs <id>`
 - [Tyroliennes](page:ziplines)
+- La zone de la carte tactique est calculée depuis les spawns, sites, murs et orbes. Pour la régler, sélectionner la zone avec la baguette et faire `/vc map setminimap <id>`. `/vc map clearminimap <id>` rétablit le calcul automatique.
 
 ### 7. Activer
 

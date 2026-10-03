@@ -9,7 +9,7 @@ Requirements: **Java 21** and **Maven**.
 mvn package
 ```
 
-The jar is produced at `target/Valocraft-2.1.jar`.
+The jar is produced at `target/Valocraft-2.2.jar`.
 
 ## Where to change things
 

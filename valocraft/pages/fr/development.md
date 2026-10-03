@@ -9,7 +9,7 @@ Prérequis : **Java 21** et **Maven**.
 mvn package
 ```
 
-Le jar se trouve dans `target/Valocraft-2.1.jar`.
+Le jar se trouve dans `target/Valocraft-2.2.jar`.
 
 ## Où modifier quoi
 

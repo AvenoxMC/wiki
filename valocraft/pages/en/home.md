@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>Valorant in Minecraft</b>: 15 agents, ultimates, ziplines, matchmaking and a full spike mode.<br>
-  Version <b>2.1 (Agent Update)</b> · Paper 1.21.4+ · Java 21
+  Version <b>2.2</b> · Paper 1.21.4+ · Java 21
 </p>
 
 
@@ -43,6 +43,7 @@
 | Test weapons outside a match | [Practice Range](page:practice-range) |
 | Solve a problem | [Troubleshooting](page:troubleshooting) |
 | Build or contribute | [Development](page:development) |
+| Read release notes | [Changelog](page:changelog) |
 
 ## ✨ Highlights
 
@@ -53,6 +54,8 @@
 - 🔫 **Hitscan weapons** with spread, recoil, penetration and 3D models
 - 🗺️ **In-game map editor** and importer for Ommo's Valorant maps
 - 📦 **Self-hosted resource pack** served on the Minecraft port (Pterodactyl compatible)
+- 🗺️ **Tactical targeting maps**, a Tab scoreboard and smoke-based player hiding
+- 💎 **Radianite progression**, unlockable agents and weapon skins
 
 ## 🔗 Links
 

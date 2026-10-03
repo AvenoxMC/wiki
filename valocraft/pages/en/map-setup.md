@@ -66,6 +66,7 @@ Select the area with the wand, then `/vc map addwall <id> [block]`. The default 
 
 - [Ultimate orbs](page:ultimate): `/vc map addorb <id>` / `/vc map clearorbs <id>`
 - [Ziplines](page:ziplines)
+- Tactical-map bounds are calculated from spawns, sites, walls and orbs. To override them, select the area with the wand and run `/vc map setminimap <id>`. Use `/vc map clearminimap <id>` to restore automatic bounds.
 
 ### 7. Enable
 

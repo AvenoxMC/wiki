@@ -32,6 +32,10 @@ Valocraft uses a Valorant-style economy (¤ credits). Weapons and ability charge
 - **XP bar**: level = bullets in the magazine, bar = magazine / reload progress.
 - **Action bar**: ultimate progress (`X ●●●○○○`).
 
+## Scoreboard (Tab)
+
+Press **Tab** during a match to see the map, round, phase, remaining time, score and sides, plus a column-aligned roster. Teammates' entries show their credits, held weapon, health/shield, K/D/A and ultimate status. Enemy credits show their balance at the start of the buy phase; enemy weapon, health and ultimate are hidden. Dead enemies' names are struck through. The vanilla player list is hidden during a match. Set `game.custom-tab: false` to disable the custom scoreboard.
+
 ## Movement
 
 - **Sprint is disabled**, as in Valorant. Walking speed is raised (`player.speed-bonus` in `config.yml`) to match Valorant's run speed.

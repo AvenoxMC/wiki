@@ -3,7 +3,7 @@
 
 | Key | Action |
 |---|---|
-| **Left click** | Shoot (automatic weapons: click fast to fire in bursts) |
+| **Left click** | Shoot; hold while aiming at a block within 64 blocks for continuous fire |
 | **Right click (hold)** | Aim / scope |
 | **Q** | Reload |
 | **Sneak + Q** | Drop the weapon (or the spike) |
@@ -21,18 +21,11 @@
 - **Guided abilities** (Sova's drone, Skye's hawk and tiger, Gekko's Thrash) follow your gaze.
 - **Jett** glides while holding the jump key.
 
-## Automatic fire and the left-click limit
+## Continuous fire (2.2)
 
-Minecraft only sends the server **one signal per left click** (nothing while the button stays held). With left-click shooting, automatic weapons therefore fire at your click rate, up to their maximum fire rate.
+Minecraft normally sends the server only **one signal per left click**. In a match, Valocraft uses the targeted block (up to **64 blocks** away) to receive a signal each tick while left click is held, letting the weapon fire at its configured rate. Blocks are never broken, no cracks are shown to other players, and the arm-swing animation is hidden. A single click still fires one bullet; semi-automatic weapons can also fire continuously at their maximum rate.
 
-For true hold-to-fire, set this in `config.yml`:
-
-```yaml
-controls:
-  fire-button: RIGHT
-```
-
-Fire is then on **held right click**, and aim is on **left click**.
+If you are aiming at the sky with no block within 64 blocks, click to fire. The knife still hits within 3 blocks. The `controls.continuous-fire`, `controls.semi-auto-hold` and `controls.hide-swing` options in `config.yml` control this behavior; see [Configuration](page:configuration).
 
 ## HUD
 

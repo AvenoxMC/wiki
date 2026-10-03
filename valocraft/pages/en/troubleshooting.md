@@ -34,8 +34,12 @@ Inventories saved during a game are stored in `plugins/Valocraft/playerdata/` an
 
 ## I updated and things look wrong
 
-- Remove the **old jar** (`Valocraft-2.0.0.jar`) so only `Valocraft-2.1.jar` remains. See [Installation](page:installation).
+- Remove the old plugin jar so that only `Valocraft-2.2.jar` remains in `plugins/`. See [Installation](page:installation).
 - Valocraft **1.x** is not compatible with 2.x.
+
+## Holding left click does not keep firing
+
+Continuous fire needs a block targeted within **64 blocks**. If you are aiming at the sky or no block is in range, click to fire a single shot. Check `controls.continuous-fire` and `controls.semi-auto-hold` in `config.yml`; see [Controls](page:controls).
 
 ## Still stuck?
 

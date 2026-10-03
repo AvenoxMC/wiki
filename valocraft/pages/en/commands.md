@@ -11,6 +11,7 @@ The main command is `/vc`.
 | `/vc leave` | Leave the game |
 | `/vc list` | List games |
 | `/vc shop` | Open the shop |
+| `/vc boutique` | Open the Radianite shop |
 | `/vc lobby` | Return to the lobby |
 | `/vc pack send` | (Re)receive the resource pack |
 | `/vc pack remove` | Remove the resource pack |
@@ -29,6 +30,10 @@ The main command is `/vc`.
 | `/vc pack remove <player\|all>` | Remove the resource pack |
 | `/vc pack info` | Pack mode and link |
 | `/vc pack reload` | Reload the pack after editing it |
+| `/vc radianite give <player> <amount>` | Give Radianite to a player |
+| `/vc radianite take <player> <amount>` | Remove Radianite from a player |
+| `/vc radianite set <player> <amount>` | Set a player's Radianite balance |
+| `/vc radianite voir <player>` | View a player's Radianite balance |
 | `/vc import list` | Show the map catalog |
 | `/vc import <name>` | Download and install a map ([Importing Maps](page:importing-maps)) |
 
@@ -49,6 +54,8 @@ See [Map Setup](page:map-setup) for the workflow.
 | `/vc map setmusic <id> <sound>` | Map music |
 | `/vc map addorb <id>` | Add an ultimate orb at your position |
 | `/vc map clearorbs <id>` | Remove all orbs |
+| `/vc map setminimap <id>` | Set the tactical-map bounds to the wand selection |
+| `/vc map clearminimap <id>` | Restore automatically calculated tactical-map bounds |
 | `/vc map addzipline <id>` | Zipline between the two wand points |
 | `/vc map ziplines <id>` | List ziplines |
 | `/vc map removezipline <id> <n>` | Remove a zipline |
@@ -61,3 +68,5 @@ See [Map Setup](page:map-setup) for the workflow.
 |---|---|---|
 | `valocraft.play` | Everyone | Play Valocraft |
 | `valocraft.admin` | Ops | Admin commands |
+| `valocraft.agents.all` | Ops | Unlock all agents |
+| `valocraft.skins.all` | Ops | Unlock all weapon skins |

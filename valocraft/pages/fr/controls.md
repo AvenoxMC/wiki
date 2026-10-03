@@ -3,7 +3,7 @@
 
 | Touche | Action |
 |---|---|
-| **Clic gauche** | Tirer (armes automatiques : cliquer vite pour tirer en rafale) |
+| **Clic gauche** | Tirer ; maintenir en visant un bloc à moins de 64 blocs pour le tir continu |
 | **Clic droit (maintenu)** | Viser / lunette |
 | **Q** | Recharger |
 | **Accroupi + Q** | Lâcher l'arme (ou la spike) |
@@ -21,18 +21,11 @@
 - **Capacités guidées** (drone de Sova, faucon et tigre de Skye, Thrash de Gekko) : elles suivent ton regard.
 - **Jett** plane en maintenant la touche de saut.
 
-## Tir automatique et limite du clic gauche
+## Tir continu (2.2)
 
-Minecraft n'envoie au serveur qu'**un signal par clic gauche** (rien tant que le bouton reste enfoncé). Avec le tir au clic gauche, les armes automatiques tirent donc au rythme des clics, jusqu'à leur cadence maximale.
+Minecraft n'envoie normalement qu'**un signal par clic gauche**. En partie, Valocraft utilise le bloc visé (jusqu'à **64 blocs**) pour recevoir un signal à chaque tick tant que le clic gauche est maintenu : l'arme tire ainsi à sa cadence configurée. Aucun bloc n'est cassé, aucune fissure n'est visible par les autres joueurs et l'animation du bras est masquée. Un clic simple tire toujours une balle ; les armes semi-automatiques peuvent aussi tirer en continu à leur cadence maximale.
 
-Pour un vrai tir automatique en maintenant le bouton, mettre dans `config.yml` :
-
-```yaml
-controls:
-  fire-button: RIGHT
-```
-
-Le tir se fait alors au **clic droit maintenu**, et la visée au **clic gauche**.
+Si tu vises le ciel sans bloc à moins de 64 blocs, clique pour tirer. Le couteau frappe toujours à moins de 3 blocs. Les options `controls.continuous-fire`, `controls.semi-auto-hold` et `controls.hide-swing` dans `config.yml` règlent ce comportement ; voir [Configuration](page:configuration).
 
 ## Interface
 

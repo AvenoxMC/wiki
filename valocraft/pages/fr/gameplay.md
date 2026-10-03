@@ -32,6 +32,10 @@ Valocraft utilise une économie à la Valorant (crédits ¤). Armes et charges d
 - **Barre d'XP** : niveau = balles dans le chargeur, barre = chargeur / progression du rechargement.
 - **Barre d'action** : progression de l'ultime (`X ●●●○○○`).
 
+## Tableau des scores (Tab)
+
+Appuie sur **Tab** pendant une partie pour voir la map, le round, la phase, le temps restant, le score et les camps, ainsi que les joueurs alignés en colonnes. Pour les alliés : crédits, arme en main, santé/bouclier, K/D/A et état de l'ultime. Pour les ennemis, les crédits correspondent au début de la phase d'achat ; arme, santé et ultime sont masqués. Le pseudo des ennemis morts est barré. La liste vanilla des joueurs est masquée pendant la partie. `game.custom-tab: false` désactive le tableau personnalisé.
+
 ## Déplacements
 
 - Le **sprint est désactivé**, comme dans Valorant. La vitesse de marche est augmentée (`player.speed-bonus` dans `config.yml`) pour correspondre à la course de Valorant.

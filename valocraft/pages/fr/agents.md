@@ -62,6 +62,12 @@ Valocraft compte **15 agents** répartis en quatre rôles. Après le compte à r
 - Les **flashs** rendent la vision **noire** et non blanche.
 - Le contour des ennemis **révélés** est visible par **tout le monde**, pas seulement par l'équipe qui révèle.
 
+## Apparence des agents et fumées (2.2)
+
+Les joueurs portent la tête de leur agent pendant toute la partie, y compris les ennemis dont le pseudo est masqué. Gekko et Harbor utilisent des têtes de remplacement ressemblantes. `agents.wear-heads: false` désactive les têtes d'agents.
+
+Les fumées et les murs utilisent des modèles 3D opaques et teintés, visibles de loin et indépendants du réglage de particules du client. Un ennemi dans une fumée ou derrière elle est masqué, quelle que soit la distance. À moins de 2,5 blocs, les joueurs se voient ; les alliés et les ennemis révélés restent visibles. Les balles traversent toujours les fumées. Réglages : `agents.smokes-hide-players` et `agents.solid-smokes`.
+
 ## Équilibrage
 
 Les capacités n'ont **pas encore été équilibrées en partie réelle**. Vos retours sont les bienvenus via les issues GitHub. Les propriétaires de serveur peuvent régler dégâts, durées et prix dans `AbilityType.java` et `Kits.java` (voir [Développement](page:development)).
