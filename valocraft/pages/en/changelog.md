@@ -1,64 +1,205 @@
 # Changelog
 
-## 2.2
+All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.21.4, Java 21).
 
-### Match HUD
+---
 
-- Added a Valorant-style **Tab scoreboard** with aligned columns. It shows the map, round, phase, timer, score and sides. Teammates' credits, weapon, health/shield, K/D/A and ultimate status are visible. Enemy credits are shown as they were at the start of the buy phase; their weapon, health and ultimate are hidden, and dead enemies' names are struck through. The vanilla player list is hidden during a match. Disable it with `game.custom-tab: false`.
+## [2.2]
 
-### Tactical ability targeting
+> Replace the jar in `plugins/`; the resource pack updates automatically.
 
-- Brimstone's Sky Smoke and Orbital Strike, and Omen's Dark Cover and From the Shadows, now use a top-down tactical map with block rendering and terrain shading.
-- The map displays sites, teammates, friendly smokes and walls, ability range and the target marker. Move the cursor with **WASD** (or **ZQSD** on AZERTY); sprint to move faster. Left click confirms; right click or sneak cancels. The player is stationary while targeting.
-- Brimstone can place Sky Smokes in sequence while charges remain. Smokes drop from above and deploy on landing.
-- Map bounds are calculated from spawns, sites, walls and orbs. Set them with `/vc map setminimap <map>` and the selection wand; `/vc map clearminimap <map>` restores automatic bounds. Set `agents.tactical-map: false` to use the previous targeting behavior.
+### Added
 
-### Smokes, walls and agent appearance
+#### Interface and visuals
+- **Full scoreboard (Tab)**, aligned in columns.
 
-- Smokes and walls now use opaque, tinted 3D models that swell on appearance, remain visible at a distance and ignore the client's particle setting.
-- Enemies inside or behind a smoke are hidden at any distance. Players within 2.5 blocks can see one another; allies and revealed enemies remain visible. Bullets still pass through smokes.
-- Players wear their agent's head throughout the match, including enemies with hidden names. Gekko and Harbor use similar replacement heads. Settings: `agents.smokes-hide-players`, `agents.solid-smokes` and `agents.wear-heads`.
+  | | Allies | Enemies |
+  |---|---|---|
+  | Agent and name | ✔ | ✔ |
+  | Credits | current credits | credits at the start of the buy phase |
+  | Weapon | weapon in hand | – |
+  | Health | HP + shield | – |a
+  | K / D / A | ✔ | ✔ |
+  | Ultimate | ✔ | – |
 
-### Radianite, agents and weapon skins
+- **Tactical minimap** for Sky Smoke, Dark Cover, Orbital Strike and From the Shadows: a rendered top-down map of the level with a cursor, the sites, teammates and smokes.
+- **Smokes really hide players**:
+  - smokes and walls are opaque, tinted 3D models, visible from afar;
+  - an enemy inside or behind a smoke disappears from your screen at any distance.
+- **Agent heads** worn by every player when full agent skins are turned off (`agents.full-skin: false`, see Agents).
+- **Lobby shop and Radianite**:
+  - agents to unlock;
+  - 6 weapon skin collections (Prime, Reaver, Glitchpop, Ion, Elderflame, Oni) on 18 weapons, i.e. 108 models.
 
-- Added a Radianite balance and a lobby shop, also available with `/vc boutique`.
-- Default match rewards: **150 ◆** for a win, **60 ◆** for a loss, **5 ◆** per elimination, **2 ◆** per assist, **5 ◆** per round won and **50 ◆** for MVP. Rewards and prices are configurable under `progression` in `config.yml`.
-- Phoenix, Jett, Sova, Brimstone and Sage are free by default; each of the other ten agents costs **1,000 ◆**. Random agent assignment only selects agents the player has unlocked.
-- Added six skin collections for all 18 weapons: **Prime**, **Reaver**, **Glitchpop**, **Ion**, **Elderflame** and **Oni**. Skins cost 1,000–2,000 ◆ and are bought and equipped per weapon. A picked-up weapon retains its owner's skin. Purchases have a confirmation step.
-- Admin commands: `/vc radianite give|take|set <player> <amount>` and `/vc radianite voir <player>`. Permissions `valocraft.agents.all` and `valocraft.skins.all` unlock all agents and skins.
+#### Game modes
+- **Swiftplay**: first to 5 rounds, side swap after 4, economy and spike, no overtime (`modes.swiftplay`).
+- **Replication**:
+  - during agent select, everyone votes for an agent (duplicates allowed);
+  - the whole team then plays the most-picked agent;
+  - first to 5 rounds (`modes.replication`).
+- **Escalation**:
+  - two teams, respawns, no abilities;
+  - each level forces a weapon: Odin, Ares, Phantom, Vandal, Spectre, Judge, Bulldog, Guardian, Sheriff, Marshal, Operator, then the **knife**;
+  - 3 team kills per level (1 on the knife level). First team to finish wins, otherwise the furthest team after 10 minutes (`modes.escalation`).
+- **Spike Rush**:
+  - first to 4 rounds;
+  - same random weapon for everyone;
+  - full abilities;
+  - every attacker carries a spike.
+- **Deathmatch**:
+  - free-for-all with 1.5 s respawns;
+  - free weapons for 10 s after spawning;
+  - a kill heals you;
+  - 40 kills or 6 minutes.
+- **Team Deathmatch**: two teams with agents and respawns, 100 kills or 9:30.
+- **Competitive**:
+  - ranks from Iron to Radiant, with 5 placement games;
+  - RR based on result, performance (combat score) and team level gap;
+  - leaving costs RR.
+- Hosts pick the mode when creating a game. `/vc map setmode <map> <mode>` sets a map's default mode.
 
-### Weapons and controls
+#### Agents (29 total)
+- 13 new agents: Breach, Astra, Fade, Tejo, Clove, Deadlock, Veto, Iso, Chamber, KAY/O, Vyse, Yoru and Waylay.
+- One new original agent: **Miks** (M-Pulse, Harmonize, Waveform, Bassquake).
+- New status effects:
+  - **suppressed**: no abilities;
+  - **hindered**: lower fire rate, slowed;
+  - **jammed**: no primary weapon;
+  - **immune**: no negative effects.
+- Two-step anchor abilities (Rendezvous, Gatecrash, Refract, Crosscut, Arc Rose): the first use places the anchor, the second uses it.
+- **First-person piloting** for Sova's Owl Drone, Skye's Trailblazer and Tejo's Stealth Drone:
+  - you become the creature, while your body stays behind and can be killed;
+  - left click = creature action, right click = return to your body.
+- **Full agent skins**: during a match, the player's whole skin becomes the agent's (not just a head). The original skin is restored back in the lobby (`agents.full-skin`).
+- **SkinsRestorer support** (optional):
+  - agent skins are signed through MineSkin, so the player also sees their own agent skin (F5 view, arms);
+  - signed skins are created in the background on startup and cached in `data/agent-skins.yml`;
+  - any agent's skin can be replaced with a skin image URL or a Minecraft username (`agents.skins.<agent>`).
 
-- Replaced the flickering pumpkin-helmet sniper scope with a fullscreen 16:9 scope: clear round lens, dark surround, fine reticle and red dot. Other players continue to see the agent head.
-- Holding left click while targeting a block within **64 blocks** sends a firing signal each tick, allowing weapons to fire at their actual rate. Nothing is mined, no cracks are shown to other players, and the arm-swing animation is hidden. A single click still fires one bullet; semi-automatic weapons also fire at their maximum rate while held. Looking at the sky with no block within range still requires a click. Knife range remains 3 blocks.
-- Settings: `controls.continuous-fire`, `controls.semi-auto-hold` and `controls.hide-swing`.
+#### Abilities
+- **Manual activation**: keys 5–8 select the ability, and left click uses it. Nothing fires just by switching slots. `controls.instant-abilities: true` restores the old behaviour.
+- **White flashes**: a full-screen white overlay that fades in 4 steps. You can't scope while flashed.
+- **Hold-to-throw with trajectory preview**:
+  - hold left click to see the arc (visible only to you), release to throw;
+  - right click = underhand lob;
+  - Sova's bolts go further the longer you hold.
+- **Visible cooldown**: the signature ability icon stays in the hotbar with Minecraft's cooldown sweep while it recharges.
+- **Destructible utility**: enemy bullets destroy deployed utility.
 
-### Verification
+  | Utility | HP |
+  |---|---|
+  | Turret | 125 |
+  | Spycam | 70 |
+  | Leer, Interceptor | 60 |
+  | Sonic Sensor, Chokehold, Trademark, Shear | 40 |
+  | Alarmbot, Trapwire, Nanoswarm | 20 |
 
-Tested on Paper 1.21.4 with two test clients connected in a match. Continuous fire emptied a Classic magazine from 12 to 1 in 1.5 seconds; a single click fired one bullet. The tactical map placed a smoke at the selected point; players concealed by smoke disappeared from one another's screens; Tab showed both teams; agent heads and sniper scopes were checked. Radianite awarded 210 to the winner and 60 to the loser. No console errors were reported.
+- **Enemy ultimates**: enemy ult points are shown in the scoreboard, with a chat alert and a sound when an enemy ult is ready.
+- **More faithful kits**:
+  - **Neon**: energy gauge, High Gear toggles the sprint, and crouching while sprinting slides;
+  - **Viper**: fuel gauge, Poison Cloud and Toxic Screen are emitters you toggle on and off;
+  - **Jett**: Tailwind is prepared first, then the dash is triggered;
+  - **Iso**: Kill Contract opens a 1v1 glass arena above the map;
+  - **Chamber**: Tour de Force now has a full-screen sniper scope on right click;
+  - **Brimstone**: smokes are orange.
+- **`abilities.yml`**: price, charges, cooldown, kill recharge and damage per ability, ult cost per agent, global damage and duration multipliers. Applied with `/vc reload`, no recompiling.
 
-## 2.1 — Agent Update
+#### Maps and loading
+- **On-demand map worlds**:
+  - map worlds stay on disk and are no longer loaded at server startup;
+  - when a match launches, the server loads the world, preloads the spawn chunks and moves everyone in;
+  - an unused world is saved and unloaded (`maps.unload-check`).
+- The **waiting room** and **agent select** now happen in the lobby.
+- **Loading screen**: a menu showing every player's card (banner), agent and title, red team at the top and blue at the bottom, while the map loads (`game.loading-time`).
+- **Player cards are now real banners**: agent color plus a role symbol. They appear in the shop, on the loading screen and in the match summary.
 
-### Agents and abilities
+#### Progression and cosmetics
+- **Battle pass**:
+  - 30 levels of 1,000 XP, with XP earned every match (win, loss, kills, assists, rounds won, MVP);
+  - one reward per level, given automatically: Radianite, cards, titles, kill banners, kill sounds, sprays;
+  - `/vc pass` menu. Changing `battlepass.season` resets everyone's level (unlocked rewards are kept).
+- **Kill banners**: on each kill, your symbol is repeated once per kill this round, in your card's color. The victim sees your card and title. 8 styles.
+- **Kill sounds**: the pitch rises with each kill of the round, with a special 5th-kill sound. 7 sets, which you can preview in the shop.
+- **Sprays**:
+  - crouch + F in a match to spray on the targeted wall, floor or ceiling;
+  - text sprays or the emblem of any of the 29 agents;
+  - one per round (every 30 s in respawn modes).
+- **Lobby leaderboards**: holograms placed with `/vc leaderboard set <type>`, refreshed every minute. Types: rank, kills, wins, ACS, headshots, aces, battle pass.
+- **Shop additions**: 14 knives, player cards, 12 titles, kill banners, kill sounds, sprays.
+- **Daily missions**: 3 random missions per day, 150 Radianite each (`/vc missions`).
+- **Match summary**:
+  - combat score, damage, first bloods, ACE announcements;
+  - damage report on death;
+  - end-of-match menu with every player's stats (`/vc resume`).
 
-- Expanded the roster to **15 agents**: Jett, Phoenix, Raze, Reyna, Neon, Sova, Skye, Gekko, Brimstone, Omen, Viper, Harbor, Sage, Killjoy and Cypher.
-- Added a **25-second agent selection** after the countdown. Agents are unique per team; players who do not choose receive a random available agent. The menu displays role, abilities, prices and ultimate cost. Agent voice lines play to the team on lock-in.
-- Added status effects: concussed, blinded, vulnerable (+50% damage taken), immobilized, revealed and intangible.
-- Ability slots use **5 / 6 / 7 / 8** for **C / Q / E / X**. Instant abilities activate on key press; other abilities are cast with left click, with right-click variants where available. Guided abilities follow the player's view; Jett glides while jump is held.
+#### Team play and social
+- **Weapon requests**: clicking a weapon you can't afford asks your team for it. A teammate who has the money clicks **[Buy for …]**: they pay and the weapon goes straight into your inventory.
+- **Parties**:
+  - `/vc party invite|leave|kick|list|chat`;
+  - the party follows its leader into games and stays on the same team.
+- **Team balancing** based on a hidden MMR.
+- **Chat**: rank and title in front of names. Messages starting with `!` go to your team only.
 
-### Ultimate system
+#### Match flow
+- **Reconnect**: a player who disconnects mid-match keeps their slot for 3 minutes and is put back in on return.
+- **Surrender and remake votes**:
+  - `/vc ff`: surrender, from round 5, 80% yes needed;
+  - `/vc remake`: until round 3, if a teammate left.
+- **AFK**: a player who doesn't move gets a warning at 45 s, then is kicked at 90 s.
+- **Lag compensation**: shots are checked against where the shooter saw the target, up to 200 ms back.
+- **Footsteps**:
+  - running is audible to enemies, with a sound that depends on the block underneath;
+  - crouch-walking is silent.
+- **Permanent radar**: a map in the off-hand showing allies, spotted enemies, the spike, the sites and your team's smokes.
 
-- Ultimate points come from eliminations, deaths, spike plants and defuses, and ultimate orbs. Points persist through halftime. Progress is displayed in the action bar; ready and activation notifications are shown to the player and team.
-- Ultimate orbs respawn each round. Hold right click beside an orb for 1.5 seconds to gain one point. Add and clear map orbs with `/vc map addorb <map>` and `/vc map clearorbs <map>`.
+#### Admin
+- `/vc forcestart [map]`: starts a match even with a single player. An empty team is never "eliminated", and the match doesn't count for ranked.
+- `/vc ult add|set <player> [points]`: adds or sets ult points (`set` without a number fills the ult).
+- `/vc pass addxp <player> <xp>`: gives battle pass XP.
+- `/vc leaderboard set <type> | remove | list`: manages the lobby leaderboards.
+- **All agents unlocked by default** (`progression.default-agents: [ALL]`).
+- **SQLite / MySQL storage** (`storage.type`), with automatic import from `stats.yml`.
 
-### Match, weapons and server tools
+### Fixed
+- **Ability icons**:
+  - Harbor's Cove showed a Gekko icon (missing entry in the resource pack);
+  - Chamber's Trademark and Rendezvous icons were swapped;
+  - KAY/O's FRAG/ment and FLASH/drive icons were swapped.
 
-- Added rideable ziplines: create them with `/vc map addzipline <map>` between the two wand-selection points. Press **F** to attach, use forward/back to move, and jump or sneak to detach.
-- Added lobby matchmaking, host-created games, player statistics and leaderboards.
-- Added 11 Valocraft 3D weapon models: Shorty, Frenzy, Stinger, Bucky, Judge, Bulldog, Guardian, Phantom, Marshal, Outlaw and Odin. Left click fires and held right click aims. Recoil now affects the bullet path, preventing the view from snapping back during bursts.
-- The resource pack is served on the Minecraft port, works with Pterodactyl and updates with the plugin. Added `/vc pack send`, `/vc pack remove`, `/vc pack info` and `/vc pack reload` (including admin targets).
-- Added map import from ommo.me with `/vc import` for private servers (CC BY-NC-ND 4.0).
+  The pack's ability icon table is now rebuilt from the textures that actually exist.
+- Right click to leave a piloted drone or tiger now works (a dedicated remote item is used).
+- **Sniper scope**: a real full-screen 16:9 scope carried by the helmet. It no longer flickers.
+- **Continuous fire**:
+  - holding left click now fires at the weapon's real fire rate;
+  - weapons can "mine" the targeted block up to 64 blocks away (nothing is ever broken), so the client sends a signal every tick;
+  - the arm swing animation is hidden.
 
-### Minecraft adaptations
+---
 
-Smokes are particle-based and blind players inside them; flashes produce black rather than white vision; revealed-enemy outlines are visible to everyone. Ability balance and pricing may need adjustment in live matches.
+## [2.1] — Agent Update
+
+### Added
+- **15 playable agents** with an agent select phase and abilities on C / Q / E / X.
+- **Ultimate system**: ult points from kills, deaths, spike and ult orbs.
+- **Ziplines**.
+- **Lobby** with a server selector and matchmaking.
+- **3D models** for every weapon.
+
+---
+
+## [2.0]
+
+### Added
+- **Core game**:
+  - Valorant-style rounds with economy and buy phase;
+  - spike plant and defuse;
+  - walls during the buy phase, overtime.
+- **Weapons**:
+  - the full Valorant arsenal, with damage falloff, spray patterns and wall penetration;
+  - shields.
+- **Maps**:
+  - map setup commands (`/vc map ...`);
+  - import of ready-made maps (`/vc import`).
+- **Server and pack**:
+  - automatic resource pack hosting on the Minecraft port;
+  - Pterodactyl support.
