@@ -1,10 +1,9 @@
-# Journal des modifications
+# Changelog
 
-Toutes les évolutions de Valocraft, une reproduction de Valorant sous forme de plugin Paper (API 1.21.4, Java 21).
 
----
+Toutes les évolutions de Valocraft, de la plus récente à la plus ancienne.
 
-## [2.2]
+## 2.2
 
 > Installation : remplacer l'ancien jar par `Valocraft-2.2.jar` dans `plugins/`. Le pack de textures est mis à jour automatiquement.
 
@@ -13,14 +12,14 @@ Toutes les évolutions de Valocraft, une reproduction de Valorant sous forme de 
 #### Interface et visuels
 - **Tableau des scores complet (Tab)**, aligné en colonnes. En haut : map, round, phase, temps, score et camp (`game.custom-tab`).
 
-  | | Alliés | Ennemis |
-  |---|---|---|
-  | Agent et pseudo | ✔ | ✔ (barré si mort) |
-  | Crédits | crédits actuels | crédits **au début de la phase d'achat** |
-  | Arme | arme en main | – |
-  | Vie | PV + bouclier | – |
-  | K / D / A | ✔ | ✔ |
-  | Ultime | points ou PRÊTE | points ou PRÊTE |
+| | Alliés | Ennemis |
+|---|---|---|
+| Agent et pseudo | ✔ | ✔ (barré si mort) |
+| Crédits | crédits actuels | crédits **au début de la phase d'achat** |
+| Arme | arme en main | – |
+| Vie | PV + bouclier | – |
+| K / D / A | ✔ | ✔ |
+| Ultime | points ou PRÊTE | points ou PRÊTE |
 
 - **Mini-map tactique** pour Sky Smoke, Dark Cover, Orbital Strike et From the Shadows :
   - carte de la map vue du dessus, avec les sites, les coéquipiers, les fumées et la portée maximale ;
@@ -107,13 +106,13 @@ Un agent original : **Miks** (contrôleur).
 - **Recharge visible** : l'icône de la signature reste dans la barre avec le balayage de recharge de Minecraft.
 - **Utilitaire destructible** : les balles ennemies détruisent les objets posés.
 
-  | Objet | PV |
-  |---|---|
-  | Tourelle | 125 |
-  | Caméra | 70 |
-  | Leer, Interceptor | 60 |
-  | Sonic Sensor, Chokehold, Trademark, Shear | 40 |
-  | Alarmbot, Trapwire, Nanoswarm | 20 |
+| Objet | PV |
+|---|---|
+| Tourelle | 125 |
+| Caméra | 70 |
+| Leer, Interceptor | 60 |
+| Sonic Sensor, Chokehold, Trademark, Shear | 40 |
+| Alarmbot, Trapwire, Nanoswarm | 20 |
 
 - **Ultimes ennemies** : leurs points sont affichés dans le tab. Une alerte (chat et son) prévient quand une ultime ennemie est prête.
 - **Kits plus fidèles** :
@@ -202,7 +201,7 @@ Un agent original : **Miks** (contrôleur).
 
 ---
 
-## [2.1] — Mise à jour des agents
+## 2.1 — Mise à jour des agents
 
 ### Ajouts
 
@@ -223,14 +222,14 @@ Une phase de **sélection d'agent** (25 s) s'ouvre après le compte à rebours. 
   - Jett plane en maintenant la touche de saut.
 - **États** :
 
-  | État | Effet |
-  |---|---|
-  | Sonné | ralenti, la vue tangue |
-  | Aveuglé | vision noire (flashs, Leer, Paranoia, Dizzy, Seekers) |
-  | Vulnérable | +50 % de dégâts reçus |
-  | Immobilisé | ni tir, ni capacité |
-  | Révélé | contour lumineux visible à travers les murs |
-  | Intangible | aucun dégât |
+| État | Effet |
+|---|---|
+| Sonné | ralenti, la vue tangue |
+| Aveuglé | vision noire (flashs, Leer, Paranoia, Dizzy, Seekers) |
+| Vulnérable | +50 % de dégâts reçus |
+| Immobilisé | ni tir, ni capacité |
+| Révélé | contour lumineux visible à travers les murs |
+| Intangible | aucun dégât |
 
 #### Système d'ultime
 - Points gagnés avec les éliminations, les morts, la pose et le désamorçage de la spike, et les **orbes d'ultime**. Ils sont conservés à la mi-temps.
@@ -252,7 +251,7 @@ Une phase de **sélection d'agent** (25 s) s'ouvre après le compte à rebours. 
 
 ---
 
-## [2.0]
+## 2.0
 
 ### Ajouts
 - **Jeu de base** :

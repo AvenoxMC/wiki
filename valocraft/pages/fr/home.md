@@ -5,14 +5,14 @@
 <h1 align="center">Wiki Valocraft</h1>
 
 <p align="center">
-  <b>Valorant dans Minecraft</b> : 15 agents, ultimes, tyroliennes, matchmaking et mode spike complet.<br>
+  <b>Valorant dans Minecraft</b> : 29 agents, 8 modes de jeu, ultimes, classé, battle pass et maps chargées à la demande.<br>
   Version <b>2.2</b> · Paper 1.21.4+ · Java 21
 </p>
 
 
 ---
 
-**Valocraft** est une reproduction de Valorant refaite de zéro pour les serveurs Minecraft. Deux équipes de cinq maximum jouent des rounds de spike avec une économie à la Valorant, des armes hitscan, des capacités d'agents et des ultimes.
+**Valocraft** est une reproduction de Valorant refaite de zéro pour les serveurs Minecraft. Deux équipes de cinq maximum jouent des rounds de spike avec une économie à la Valorant, des armes hitscan, des capacités d'agents et des ultimes. Il y a aussi des modes rapides, du deathmatch et Escalation.
 
 > ⚠️ Valocraft 2.x est une réécriture complète. Rien des versions 1.x n'existe plus, et les configs et maps 1.x ne sont pas compatibles.
 
@@ -28,12 +28,14 @@
 | Je veux... | Aller à |
 |---|---|
 | Installer ou mettre à jour le plugin | [Installation](page:installation) |
+| Rejoindre, héberger, voir ses stats et les classements | [Lobby et matchmaking](page:lobby) |
 | Comprendre une partie (rounds, économie, spike) | [Déroulement du jeu](page:gameplay) |
+| Connaître les modes (Swiftplay, Escalation...) | [Modes de jeu](page:modes) |
 | Connaître les touches | [Contrôles](page:controls) |
 | Voir tous les agents et capacités | [Agents](page:agents) |
 | Comprendre les points d'ultime et les orbes | [Système d'ultime](page:ultimate) |
 | Connaître les armes | [Armes](page:weapons) |
-| Rejoindre, héberger, voir ses stats | [Lobby et matchmaking](page:lobby) |
+| Battle pass, skins, sprays, bannières, classé | [Progression et cosmétiques](page:progression) |
 | Construire ma propre map | [Création de map](page:map-setup) |
 | Télécharger une map toute faite | [Import de maps](page:importing-maps) |
 | Ajouter des tyroliennes | [Tyroliennes](page:ziplines) |
@@ -47,15 +49,16 @@
 
 ## ✨ Points forts
 
-- 🎭 **15 agents** répartis en Duellistes, Initiateurs, Contrôleurs et Sentinelles
-- ⚡ **Système d'ultime** alimenté par les éliminations, les morts, la spike et les orbes d'ultime
-- 🧭 **Tyroliennes** sur lesquelles on peut glisser et tirer
-- 🏟️ **Lobby avec matchmaking**, parties hébergées, stats et classements
-- 🔫 **Armes hitscan** avec imprécision, recul, pénétration et modèles 3D
+- 🎭 **29 agents** (Duellistes, Initiateurs, Contrôleurs, Sentinelles), avec leur **skin complet** en partie
+- 🎮 **8 modes** : Non classé, Compétition, Swiftplay, Replication, Spike Rush, Deathmatch, Team Deathmatch, Escalation
+- ⚡ **Capacités fidèles** : flashs blancs, trajectoires des lancers, jauges de Neon et Viper, utilitaire destructible, pilotage des drones à la première personne
+- 🥇 **Classé** avec rangs et RR, **battle pass** de 30 niveaux, missions du jour
+- 🎨 **Cosmétiques** : skins d'armes, couteaux, cartes (bannières), titres, bannières et sons d'élimination, sprays
+- 🏆 **Classements en hologrammes** dans le lobby
+- 🌍 **Maps chargées à la demande**, avec écran de chargement aux cartes et titres de chaque joueur
+- 🔫 **Armes hitscan** avec tir continu, recul, pénétration, compensation de latence et modèles 3D
 - 🗺️ **Éditeur de maps en jeu** et import des maps Valorant d'Ommo
 - 📦 **Pack de textures auto-hébergé** servi sur le port Minecraft (compatible Pterodactyl)
-- 🗺️ **Cartes tactiques de ciblage**, scoreboard Tab et joueurs masqués par les fumées
-- 💎 **Progression en Radianite**, agents à débloquer et skins d'armes
 
 ## 🔗 Liens
 

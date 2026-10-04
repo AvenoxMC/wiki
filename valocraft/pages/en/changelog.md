@@ -1,10 +1,9 @@
 # Changelog
 
-All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.21.4, Java 21).
 
----
+All notable changes to Valocraft, newest first.
 
-## [2.2]
+## 2.2
 
 > Replace the jar in `plugins/`; the resource pack updates automatically.
 
@@ -13,14 +12,14 @@ All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.
 #### Interface and visuals
 - **Full scoreboard (Tab)**, aligned in columns.
 
-  | | Allies | Enemies |
-  |---|---|---|
-  | Agent and name | ✔ | ✔ |
-  | Credits | current credits | credits at the start of the buy phase |
-  | Weapon | weapon in hand | – |
-  | Health | HP + shield | – |a
-  | K / D / A | ✔ | ✔ |
-  | Ultimate | ✔ | – |
+| | Allies | Enemies |
+|---|---|---|
+| Agent and name | ✔ | ✔ |
+| Credits | current credits | credits at the start of the buy phase |
+| Weapon | weapon in hand | – |
+| Health | HP + shield | – |
+| K / D / A | ✔ | ✔ |
+| Ultimate | ✔ | – |
 
 - **Tactical minimap** for Sky Smoke, Dark Cover, Orbital Strike and From the Shadows: a rendered top-down map of the level with a cursor, the sites, teammates and smokes.
 - **Smokes really hide players**:
@@ -86,13 +85,13 @@ All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.
 - **Visible cooldown**: the signature ability icon stays in the hotbar with Minecraft's cooldown sweep while it recharges.
 - **Destructible utility**: enemy bullets destroy deployed utility.
 
-  | Utility | HP |
-  |---|---|
-  | Turret | 125 |
-  | Spycam | 70 |
-  | Leer, Interceptor | 60 |
-  | Sonic Sensor, Chokehold, Trademark, Shear | 40 |
-  | Alarmbot, Trapwire, Nanoswarm | 20 |
+| Utility | HP |
+|---|---|
+| Turret | 125 |
+| Spycam | 70 |
+| Leer, Interceptor | 60 |
+| Sonic Sensor, Chokehold, Trademark, Shear | 40 |
+| Alarmbot, Trapwire, Nanoswarm | 20 |
 
 - **Enemy ultimates**: enemy ult points are shown in the scoreboard, with a chat alert and a sound when an enemy ult is ready.
 - **More faithful kits**:
@@ -176,7 +175,7 @@ All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.
 
 ---
 
-## [2.1] — Agent Update
+## 2.1 — Agent Update
 
 ### Added
 - **15 playable agents** with an agent select phase and abilities on C / Q / E / X.
@@ -184,10 +183,15 @@ All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.
 - **Ziplines**.
 - **Lobby** with a server selector and matchmaking.
 - **3D models** for every weapon.
+- **Resource pack** served on the Minecraft port itself (Pterodactyl-friendly) and updated automatically; `/vc pack send | remove | info | reload`.
+- **Map import** from ommo.me (`/vc import`), for private servers only (CC BY-NC-ND 4.0 license).
+
+### Fixed
+- The screen no longer "snaps back" during sprays: recoil is entirely in the bullet trajectory.
 
 ---
 
-## [2.0]
+## 2.0
 
 ### Added
 - **Core game**:
@@ -197,9 +201,7 @@ All notable changes to Valocraft, a Valorant recreation plugin for Paper (API 1.
 - **Weapons**:
   - the full Valorant arsenal, with damage falloff, spray patterns and wall penetration;
   - shields.
-- **Maps**:
-  - map setup commands (`/vc map ...`);
-  - import of ready-made maps (`/vc import`).
+- **Maps**: map setup commands (`/vc map ...`).
 - **Server and pack**:
   - automatic resource pack hosting on the Minecraft port;
   - Pterodactyl support.

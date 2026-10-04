@@ -5,16 +5,16 @@ Maps are configured **in game** with `/vc map ...` and the selection wand. This 
 
 ## What a playable map needs
 
-- A **waiting room**
-- **Attacker** and **defender** spawns (usually 5 each)
+- A **waiting room** (used at the end of a match and on reconnect)
+- **Attack** and **defend** spawns (usually 5 each)
 - At least one **spike site** (A, B, C...)
 - **Pre-round walls**
 - Player limits
-- To be **enabled**
+- Being **enabled**
 
-`/vc map info <id>` lists exactly what is still missing.
+`/vc map info <id>` lists exactly what's missing.
 
-## Walkthrough
+## Full walkthrough
 
 ```
 /vc map create ascent
@@ -27,10 +27,11 @@ Maps are configured **in game** with `/vc map ...` and the selection wand. This 
 /vc map addsite ascent B
 /vc map addwall ascent               (selection = pre-round wall, green glass by default)
 /vc map addwall ascent light_blue_stained_glass
-/vc map previewwalls ascent          (show / hide the walls to check them)
+/vc map previewwalls ascent          (show / hide walls to check them)
 /vc map setplayers ascent 2 10
+/vc map setmode ascent unrated       (default mode, optional)
 /vc map setmusic ascent hrdavalorant.maps.ascent
-/vc map addorb ascent                (ultimate orbs, optional)
+/vc map addorb ascent                (ult orbs, optional)
 /vc map addzipline ascent            (ziplines, optional)
 /vc map enable ascent
 ```
@@ -43,40 +44,46 @@ Maps are configured **in game** with `/vc map ...` and the selection wand. This 
 
 ### 2. Waiting room and spawns
 
-Stand where you want it and run `/vc map setwaiting <id>`. Repeat `/vc map addspawn <id> attack` and `/vc map addspawn <id> defend` at each spawn position.
+Stand where you want it and run `/vc map setwaiting <id>`. Repeat `/vc map addspawn <id> attack` and `/vc map addspawn <id> defend` at each spawn position. `/vc map clearspawns <id> <attack|defend>` clears a list.
 
 ### 3. Spike sites
 
 1. `/vc wand`
 2. **Left click** = pos1, **right click** = pos2.
-3. `/vc map addsite <id> A` (and `B`, `C`...). The selection becomes the plant zone.
+3. `/vc map addsite <id> A` (and `B`, `C`...). The selection becomes the plant zone. `/vc map removesite <id> <site>` removes one.
 
 ### 4. Pre-round walls
 
-Select the area with the wand, then `/vc map addwall <id> [block]`. The default block is **green glass**; pass another block name such as `light_blue_stained_glass` to change it.
+Select the area with the wand, then `/vc map addwall <id> [block]`. The default block is **green glass**.
 
-- Walls only fill **empty** blocks of the zone and are removed identically at round start, so the map is **never damaged**.
-- `/vc map previewwalls <id>` toggles a preview so you can check placement.
+- Walls only fill **empty** blocks and are removed exactly when the round starts: the map is **never damaged**.
+- `/vc map previewwalls <id>` shows or hides a preview; `/vc map walls <id>` lists them, `/vc map removewall <id> <n>` removes one.
 
-### 5. Players and music
+### 5. Players, mode and music
 
-`/vc map setplayers <id> <min> <max>` sets the player range, and `/vc map setmusic <id> <sound>` sets the music.
+`/vc map setplayers <id> <min> <max>`, `/vc map setmode <id> <mode>` ([Game Modes](page:modes)), `/vc map setmusic <id> <sound|none>`.
 
-### 6. Optional features
+### 6. Options
 
-- [Ultimate orbs](page:ultimate): `/vc map addorb <id>` / `/vc map clearorbs <id>`
+- [Ult orbs](page:ultimate): `/vc map addorb <id>` / `/vc map clearorbs <id>`
 - [Ziplines](page:ziplines)
-- Tactical-map bounds are calculated from spawns, sites, walls and orbs. To override them, select the area with the wand and run `/vc map setminimap <id>`. Use `/vc map clearminimap <id>` to restore automatic bounds.
+- Tactical map and radar area: computed from spawns, sites, walls and orbs. To set it manually, select the area with the wand and run `/vc map setminimap <id>`; `/vc map clearminimap <id>` goes back to automatic.
 
 ### 7. Enable
 
-`/vc map enable <id>`.
+`/vc map enable <id>` (and `disable` to take it out of rotation).
 
-## Crash safety
+## Map world: loaded on demand
 
-Placed blocks (walls, spike) are **saved to disk** in `plugins/Valocraft/data/` and **restored if the server crashes**.
+- A map built in its **own world** (for example `vc_ascent`, created by [importing](page:importing-maps)) is **not loaded at server startup**. The world is loaded **when a match launches**, during the loading screen, then **saved and unloaded** once nobody uses it (checked every 30 s, `maps.unload-check`).
+- `/vc map tp <id>` and `/vc map previewwalls <id>` load the world on demand to set the map up. It's unloaded once you leave.
+- A map built in the **main world** (`world`) works too, but that world always stays loaded.
 
-## Related
+## Crash protection
+
+Placed blocks (walls, spike, abilities) are **saved to disk** in `plugins/Valocraft/data/` and **restored the next time the world loads** if the server crashes.
+
+## See also
 
 - [Commands and Permissions](page:commands)
 - [Importing Maps](page:importing-maps)

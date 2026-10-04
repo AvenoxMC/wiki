@@ -7,27 +7,36 @@
 | **Right click (hold)** | Aim / scope |
 | **Q** | Reload |
 | **Sneak + Q** | Drop the weapon (or the spike) |
-| **F** | Shop during the buy phase, otherwise pick up the targeted weapon |
+| **F** | Shop during the buy phase, otherwise pick up the weapon you look at |
+| **Sneak + F** | Spray on the wall you look at |
 | **1 / 2 / 3 / 4** | Primary / sidearm / knife / spike |
-| **5 / 6 / 7 / 8** | Agent abilities **C / Q / E / X** |
-| **F** near a rope | Hook onto a [zipline](page:ziplines) |
-| **Hold right click** with the spike on a site | Plant the spike (stay still) |
-| **Hold right click** on the spike (defender) | Defuse (stay still) |
+| **5 / 6 / 7 / 8**, then **left click** | Take, then use ability **C / Q / E / X** |
+| **F** near a rope | Grab a [zipline](page:ziplines) |
+| **Hold right click** with the spike on a site | Plant (stand still) |
+| **Hold right click** on the spike (defender) | Defuse (stand still) |
+| **Tab** | Scoreboard |
 
-## Ability controls
+## Abilities
 
-- **Instant abilities** activate as soon as you press the key: Updraft, Tailwind, Devour, Dismiss, High Gear, Regrowth, and the ultimates Run it Back, Empress, Lockdown, Viper's Pit and Seekers.
-- **All other abilities**: **left click** to cast, **right click** for the variant when one exists (Curveball on right click, Sova's arrows without bounce, Healing Orb on self, Blade Storm all knives at once).
-- **Guided abilities** (Sova's drone, Skye's hawk and tiger, Gekko's Thrash) follow your gaze.
-- **Jett** glides while holding the jump key.
+- **Manual activation**: keys 5 to 8 take the ability in hand, **left click** uses it. Nothing fires just by switching slots. To trigger on keypress again (Tailwind, High Gear, Dismiss, instant ultimates...): `controls.instant-abilities: true`.
+- **Thrown abilities**: **hold** left click to see the trajectory (visible only to you), **release** to throw. **Right click**: underhand lob, or the variant when there is one (Curveball to the right, Sova's bolts without bounce, Healing Orb on yourself, quick FLASH/drive, healing M-Pulse).
+- **Sova's bolts**: the longer you hold, the further they go ("Power" gauge).
+- **Piloting** (Sova's drone, Skye's tiger, Tejo's drone): you see through the creature's eyes, WASD to move, left click = action, right click = back to your body.
+- **Tactical map**: WASD moves the cursor (sprint to go faster), left click places, right click or sneak cancels.
+- **Anchor abilities**: first click = place, second click = use.
+- **Neon**: sneak during High Gear = slide. **Viper**: clicking a placed emitter turns it on / off.
+- **Tour de Force** (Chamber): right click = scope, left click = shoot.
+- **Jett** glides while holding jump.
 
-## Continuous fire (2.2)
+## Continuous fire
 
-Minecraft normally sends the server only **one signal per left click**. In a match, Valocraft uses the targeted block (up to **64 blocks** away) to receive a signal each tick while left click is held, letting the weapon fire at its configured rate. Blocks are never broken, no cracks are shown to other players, and the arm-swing animation is hidden. A single click still fires one bullet; semi-automatic weapons can also fire continuously at their maximum rate.
+Minecraft normally sends **one signal per left click**. In a match, Valocraft uses the targeted block (up to **64 blocks**) to receive a signal every tick while the click is held: the weapon fires at its configured rate. No block is broken, no cracks are visible and the arm swing is hidden. A single click fires one bullet; semi-autos also fire continuously at their max rate.
 
-If you are aiming at the sky with no block within 64 blocks, click to fire. The knife still hits within 3 blocks. The `controls.continuous-fire`, `controls.semi-auto-hold` and `controls.hide-swing` options in `config.yml` control this behavior; see [Configuration](page:configuration).
+When aiming at the sky with no block within 64 blocks, you need to click. The knife always hits within 3 blocks. Settings: `controls.continuous-fire`, `controls.semi-auto-hold`, `controls.hide-swing` ([Configuration](page:configuration)).
 
 ## HUD
 
 - **XP bar**: level = bullets in the magazine, bar = magazine / reload progress.
 - **Hearts** = HP (100 HP = 10 hearts), **golden hearts** = shield.
+- **Action bar**: HP, ammo, credits, ultimate and agent gauges.
+- **Off-hand**: radar.

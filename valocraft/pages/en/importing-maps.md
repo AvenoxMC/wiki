@@ -1,30 +1,31 @@
 # Importing Maps
 
 
-Valocraft can download maps from Ommo's [VALORANT x Minecraft](https://ommo.me/valorant-x-minecraft) project directly from the game.
+Valocraft can download maps from [Ommo's VALORANT x Minecraft](https://ommo.me/valorant-x-minecraft) project directly in game.
 
 ## Commands
 
 ```
 /vc import list          catalog + required Minecraft version
-/vc import ascent        downloads, installs the world vc_ascent and creates the Valocraft map "ascent"
+/vc import ascent        downloads, installs the vc_ascent world and creates the Valocraft map "ascent"
 ```
 
-## What the importer does
+## What the import does
 
-- Downloads the map and installs it as the world `vc_<name>`.
+- Downloads the map and installs it as the `vc_<name>` world.
 - Creates a Valocraft map with the same id.
-- **Loads the world automatically** on every server start.
+- The world is then **loaded on demand**: when a match launches on that map, or with `/vc map tp <name>` to set it up. It's unloaded once nobody uses it ([Map Setup](page:map-setup)).
 
-## What you still have to do
+## What's left to do
 
-The importer does **not** place gameplay points. You still need to set:
+The import does **not** place gameplay points. You still need:
 
+- The waiting room
 - Spawns (attack / defend)
 - Spike sites
 - Pre-round walls
 
-Follow [Map Setup](page:map-setup), then enable the map:
+Go to the map with `/vc map tp ascent`, follow [Map Setup](page:map-setup), then enable it:
 
 ```
 /vc map enable ascent
@@ -32,16 +33,16 @@ Follow [Map Setup](page:map-setup), then enable the map:
 
 ## Version limits
 
-A map saved in a **newer Minecraft version than your server** is refused. **Lotus, Sunset and Breeze** require **Minecraft 1.21.11**.
+A map saved in a **newer Minecraft version than the server** is refused. **Lotus, Sunset and Breeze** require **Minecraft 1.21.11**.
 
 ## Editing the catalog
 
-The map catalog is the `map-library` section of `config.yml`.
+The catalog is the `map-library` section of `config.yml`.
 
 ## ⚖️ License
 
-Ommo's maps are under **CC BY-NC-ND 4.0**.
+Ommo's maps are licensed **CC BY-NC-ND 4.0**.
 
-- Allowed on a **private server among friends**.
-- A **public server** requires a **commercial license** (contact@ommo.me).
+- Allowed on a **private server between friends**.
+- A **public** server needs a **commercial license** (contact@ommo.me).
 - **Do not republish** the maps.

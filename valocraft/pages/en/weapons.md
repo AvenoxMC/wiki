@@ -13,47 +13,41 @@ Every weapon has a 3D model.
 | Shotguns | Bucky, Judge |
 | Rifles | Bulldog, Guardian, Phantom, Vandal |
 | Snipers | Marshal, Operator, Outlaw |
-| Heavies | Ares, Odin |
+| Heavy | Ares, Odin |
 
-Weapons and charges are bought in the shop during the buy phase (`F`, or `/vc shop`).
+Weapons and charges are bought in the shop during the buy phase (`F`, or `/vc shop`). A weapon you can't afford can be **requested from a teammate** ([Gameplay](page:gameplay)).
 
 ## Mechanics
 
-| Mechanic | Behavior |
+| Mechanic | How it works |
 |---|---|
-| **Shooting** | Hitscan |
-| **Accuracy** | Spread depends on movement: it grows when moving or in the air, and differs when crouching. Stop (or crouch) before shooting for accurate shots. Running or jumping makes them inaccurate. |
-| **Recoil** | Climb, then lateral sweep. Built entirely into the bullet trajectory. |
-| **Damage** | Head / body / legs, with range falloff tiers |
-| **Penetration** | Bullets can go through walls |
-| **Reload** | Reload with **Q**. Progress shows on the XP bar. |
-| **Aim / scope** | Hold right click. Scopes on Operator, Marshal and Outlaw. |
-| **Shotguns** | Close-range weapons (Bucky, Judge) |
+| **Shooting** | Hitscan, with **lag compensation** (up to 200 ms) |
+| **Accuracy** | Inaccuracy grows while moving or in the air and changes when crouching. Stopping (or crouching) before shooting makes shots accurate. |
+| **Recoil** | Climb then side sway, entirely built into bullet trajectory (your view doesn't move). |
+| **Damage** | Head / body / legs, with range falloff steps |
+| **Penetration** | Bullets go through walls; they destroy **enemy utility** they hit (turret, camera, traps...) |
+| **Reload** | Key **Q**. Progress shown on the XP bar. |
+| **Aim / scope** | Hold right click. Scopes on Operator, Marshal and Outlaw. No scoping while flashed. |
+| **Shotguns** | Short range (Bucky, Judge) |
 | **Knife** | **x3 damage** from behind |
 
-## Recoil and the camera
+## Hold to fire
 
-Recoil **never moves the player's view**. The server can only force an absolute camera orientation, which made the screen snap back during bursts. In 2.1 all recoil is applied to the **bullet path** instead.
+Holding left click while aiming at a block within 64 blocks fires the weapon at its real fire rate. No block is damaged and the arm swing is hidden. Semi-autos fire at their max rate while held. See [Controls](page:controls).
 
-## Hold-to-fire (2.2)
+## Scopes
 
-Hold left click while aiming at a block within 64 blocks to fire at the weapon's actual rate. Nothing is mined or damaged, and the swing animation is hidden. Semi-automatic weapons fire at their maximum rate while held. If no block is targeted within range, click to fire a single shot. See [Controls](page:controls) and [Configuration](page:configuration).
+The Operator, Marshal, Outlaw and Chamber's ultimate (Tour de Force) use a full-screen 16:9 scope: sharp round lens, black around it, thin crosshair and red dot. It's carried by the helmet and doesn't flicker.
 
 ## Skins
 
-The lobby shop sells six skin collections for all 18 weapons: Prime, Reaver, Glitchpop, Ion, Elderflame and Oni. Skins cost 1,000–2,000 Radianite, are purchased and equipped per weapon, and stay on weapons when their owner drops them. See [Lobby and Matchmaking](page:lobby).
-
-## Sniper scopes
-
-The Operator, Marshal and Outlaw use a fullscreen 16:9 scope with a clear circular lens, dark surround, fine reticle and red dot. It no longer flickers during inventory updates.
+The lobby shop offers six collections for the 18 weapons: Prime, Reaver, Glitchpop, Ion, Elderflame and Oni, plus 14 knives. Skins are bought and equipped per weapon; a picked-up weapon keeps its owner's skin. See [Progression and Cosmetics](page:progression).
 
 ## Models
 
-- **HrdaValorant pack**: Classic, Ghost, Sheriff, Spectre, Vandal, Ares, Operator, Knife (and its `model-data` skins 2 to 15), shields.
-- **Valocraft models**, made for this project (`assets/valocraft` in the pack): Shorty, Frenzy, Stinger, Bucky, Judge, Bulldog, Guardian, Phantom, Marshal, Outlaw, Odin. They use the `item_model` component (`item-model: valocraft:<weapon>`, automatic).
-
-Model sources and tools are covered in [Development](page:development).
+- **HrdaValorant pack**: Classic, Ghost, Sheriff, Spectre, Vandal, Ares, Operator, knives, shields.
+- **Valocraft models**, made for the project: Shorty, Frenzy, Stinger, Bucky, Judge, Bulldog, Guardian, Phantom, Marshal, Outlaw, Odin (`item_model` component).
 
 ## Tuning
 
-All stats (damage, fire rate, spread, recoil, penetration, zoom...) live in `weapons.yml`, with comments at the top of the file. Reload with `/vc reload`. To test changes safely, use the [Practice Range](page:practice-range).
+All stats (damage, fire rate, inaccuracy, recoil, penetration, zoom...) are in `weapons.yml`, documented at the top of the file. Reload with `/vc reload`. To test, use the [Practice Range](page:practice-range).

@@ -1,54 +1,70 @@
 # Configuration
 
 
-Files live in `plugins/Valocraft/`. Reload `config.yml` and `weapons.yml` with `/vc reload`.
+Files live in `plugins/Valocraft/`. `/vc reload` reloads `config.yml`, `weapons.yml` and `abilities.yml`. New options are added to `config.yml` automatically on updates.
 
 ## Files and folders
 
 | Path | Purpose |
 |---|---|
-| `config.yml` | General settings, controls, resource pack, map library |
-| `weapons.yml` | All weapon stats (commented at the top of the file) |
-| `stats.yml` | Player statistics |
-| `resourcepack.zip` | Resource pack extracted from the jar at first start |
+| `config.yml` | General settings, modes, controls, progression, battle pass, resource pack, map library |
+| `weapons.yml` | Stats of every weapon (documented at the top of the file) |
+| `abilities.yml` | Price, charges, cooldowns and damage of every ability, ult costs |
+| `stats.yml` / `valocraft.db` | Player profiles (YAML by default, SQLite or MySQL) |
+| `leaderboards.yml` | Lobby leaderboard positions |
+| `resourcepack.zip` | Resource pack extracted from the jar |
 | `maps/<id>.yml` | One file per map |
-| `playerdata/` | Inventories saved during a game, returned on reconnect after a crash |
-| `data/` | Temporary blocks (walls, spike) restored after a crash |
+| `playerdata/` | Inventories saved during a match, given back after a crash |
+| `data/` | Temporary blocks to restore after a crash, minimaps, signed agent skins (`agent-skins.yml`) |
 
-## `config.yml` options
+## Main `config.yml` options
 
 | Key | Purpose |
 |---|---|
-| `controls.fire-button` | `RIGHT` = fire on held right click, aim on left click. See [Controls](page:controls). |
-| `controls.continuous-fire` | Enable the 2.2 held-click continuous-fire behavior. |
-| `controls.semi-auto-hold` | Allow semi-automatic weapons to fire while held. |
-| `controls.hide-swing` | Hide the arm-swing animation while firing. |
-| `game.custom-tab` | Enable or disable the custom in-match Tab scoreboard. |
-| `agents.tactical-map` | Enable the top-down targeting map for controller abilities; `false` restores the previous targeting behavior. |
-| `agents.smokes-hide-players` | Hide enemies inside or behind smokes. |
-| `agents.solid-smokes` | Use opaque 3D smoke and wall models. |
-| `agents.wear-heads` | Show each player's agent head during a match. |
-| `progression` | Configure Radianite rewards, shop prices and free agents. |
-| `player.speed-bonus` | Walking speed bonus that stands in for Valorant's run speed (sprint is disabled) |
-| `weapons.practice-mode` | Enable or disable the [Practice Range](page:practice-range) |
-| `resource-pack.self-host.http-port` | Dedicated HTTP port for the pack (for example `8164`) |
-| `resource-pack.self-host.enabled` | Set to `false` to use an external URL |
-| `resource-pack.url` / `resource-pack.sha1` | External pack URL and its checksum |
-| `map-library` | Catalog for `/vc import` ([Importing Maps](page:importing-maps)) |
+| `game.countdown`, `game.rounds-to-win`, `game.loading-time` | Countdown, rounds to win, minimum loading screen duration |
+| `game.custom-tab`, `game.radar` | Custom scoreboard, off-hand radar |
+| `modes.<mode>.*` | Settings of each [mode](page:modes) (rounds, kills, time, Escalation weapons...) |
+| `maps.unload-check` | Seconds between two checks for map worlds to unload |
+| `controls.fire-button`, `controls.aim-mode` | Fire button (`LEFT` / `RIGHT`) and aiming (`HOLD` / `TOGGLE`) |
+| `controls.continuous-fire`, `controls.semi-auto-hold`, `controls.hide-swing` | Continuous fire ([Controls](page:controls)) |
+| `controls.instant-abilities` | `false` (default): manual ability activation; `true`: trigger on keypress |
+| `agents.select-time` | Agent select duration |
+| `agents.full-skin`, `agents.wear-heads` | Full agent skin / agent heads |
+| `agents.skins-restorer`, `agents.skins.<agent>` | Signed skins through SkinsRestorer / custom skin for an agent (image URL or username) |
+| `agents.tactical-map`, `agents.smokes-hide-players`, `agents.solid-smokes` | Tactical map, smokes that hide, 3D smokes |
+| `progression.*` | Radianite, prices, free agents (`default-agents: [ALL]`), `cosmetic-prices` |
+| `battlepass.*` | Season, levels, XP, rewards ([Progression](page:progression)) |
+| `leaderboards.refresh`, `leaderboards.size` | Lobby leaderboards |
+| `reconnect.*`, `surrender.*`, `remake.*`, `afk.*` | Reconnect, votes, inactivity |
+| `ranked.*`, `missions.*`, `party.*`, `chat.*`, `footsteps.*` | Ranked, missions, parties, chat, footsteps |
+| `storage.type` | `yaml`, `sqlite` or `mysql` (automatic import from `stats.yml`) |
+| `weapons.lag-compensation`, `weapons.practice-mode` | Lag compensation, [Practice Range](page:practice-range) |
+| `player.speed-bonus` | Walking speed bonus (sprinting is disabled) |
+| `resource-pack.*` | Pack hosting ([Resource Pack](page:resource-pack)) |
+| `map-library` | `/vc import` catalog |
 
-Example, hold-to-fire:
+## `abilities.yml`
+
+Created on first startup with the original values, completed automatically when new abilities appear.
 
 ```yaml
-controls:
-  fire-button: RIGHT
+global:
+  damage-multiplier: 1.0      # damage of every ability
+  duration-multiplier: 1.0    # duration of smokes, fires, traps
+agents:
+  jett:
+    ult-cost: 8
+    cloudburst:
+      price: 200
+      max-charges: 2
+      free-charges: 0
+      cooldown: 0             # seconds to get a free charge back
+      kill-recharge: 0        # comes back after N kills
+      damage-multiplier: 1.0
 ```
+
+Edit, then `/vc reload`: no recompiling needed.
 
 ## `weapons.yml`
 
-Holds every weapon stat: damage, fire rate, spread, recoil, penetration, zoom and more. See [Weapons](page:weapons).
-
-## Ability tuning
-
-Ability damage, durations and prices are defined in `AbilityType.java` and `Kits.java`. These are in the source, so changing them means rebuilding the plugin. See [Development](page:development).
-
-Progression values are configurable in the `progression` section of `config.yml`. Admins can grant, remove or set player balances with `/vc radianite give|take|set <player> <amount>` and inspect a balance with `/vc radianite voir <player>`.
+Every weapon stat: damage, fire rate, inaccuracy, recoil, penetration, zoom and more. See [Weapons](page:weapons).

@@ -14,17 +14,18 @@ Valocraft peut télécharger les maps du projet [VALORANT x Minecraft d'Ommo](ht
 
 - Télécharge la map et l'installe comme monde `vc_<nom>`.
 - Crée une map Valocraft avec le même id.
-- **Charge le monde automatiquement** à chaque démarrage du serveur.
+- Le monde est ensuite **chargé à la demande** : au lancement d'une partie sur cette map, ou avec `/vc map tp <nom>` pour la configurer. Il est déchargé quand plus personne ne l'utilise ([Création de map](page:map-setup)).
 
 ## Ce qu'il reste à faire
 
 L'import ne place **pas** les points de jeu. Il faut encore définir :
 
+- La salle d'attente
 - Les spawns (attaque / défense)
 - Les sites de spike
 - Les murs de pré-round
 
-Suivre [Création de map](page:map-setup), puis activer la map :
+Aller sur la map avec `/vc map tp ascent`, suivre [Création de map](page:map-setup), puis activer :
 
 ```
 /vc map enable ascent

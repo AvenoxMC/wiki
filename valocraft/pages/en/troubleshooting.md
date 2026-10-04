@@ -3,44 +3,60 @@
 
 ## The resource pack doesn't load
 
-1. Check the **server console**: it logs the link offered to each player and the client's response (`ACCEPTED`, `DECLINED`, `FAILED_DOWNLOAD`, `SUCCESSFULLY_LOADED`...).
-2. Ask the player to run `/vc pack send` to receive it again.
+1. Check the **server console**: it shows the link offered to each player and the client's answer (`ACCEPTED`, `DECLINED`, `FAILED_DOWNLOAD`, `SUCCESSFULLY_LOADED`...).
+2. Ask the player to run `/vc pack send` again.
 3. Admins: `/vc pack info` shows the mode and link, `/vc pack reload` reloads it.
-4. If the Minecraft-port hosting doesn't work for you, use a dedicated port (`resource-pack.self-host.http-port: 8164`) or an external URL. See [Resource Pack](page:resource-pack).
+4. If hosting on the Minecraft port doesn't work for you, use a dedicated port (`resource-pack.self-host.http-port: 8164`) or an external URL. See [Resource Pack](page:resource-pack).
 
-## My map won't start / isn't playable
+## An ability icon shows the wrong agent
 
-Run `/vc map info <id>`: it lists what is missing (waiting room, spawns, sites, walls, player limits, enable). See [Map Setup](page:map-setup).
+Update the plugin: the fixed pack (Cove, Trademark / Rendezvous, FRAG/ment / FLASH/drive icons) is sent automatically. If the old pack is still cached, run `/vc pack send`.
+
+## My map doesn't start / isn't playable
+
+Run `/vc map info <id>`: it lists what's missing (waiting room, spawns, sites, walls, player limits, enabled). See [Map Setup](page:map-setup).
+
+## "Map world not found"
+
+The world folder (`vc_<map>`) no longer exists next to the server, or the world name saved in `maps/<id>.yml` (`world` key) is wrong. Worlds are no longer loaded at startup: it's normal not to see them in `/mv list` or similar until a match launches.
+
+## I can't see my own agent skin in F5
+
+Minecraft only accepts skins signed by Mojang for yourself. Other players do see your agent skin. Install **SkinsRestorer**: skins are then signed through MineSkin and visible to everyone ([Installation](page:installation)). The server needs Internet access on the first startup.
+
+## A game started alone ends immediately
+
+Use `/vc forcestart` (not `/vc start`): an empty team is then never considered eliminated.
+
+## My ability doesn't fire when I press the key
+
+That's expected: the key takes the ability in hand, **left click** uses it. For the old behaviour: `controls.instant-abilities: true` ([Controls](page:controls)).
 
 ## An imported map is refused
 
-The map was saved in a **newer Minecraft version** than your server. Lotus, Sunset and Breeze require **Minecraft 1.21.11**. See [Importing Maps](page:importing-maps).
+The map was saved in a **newer Minecraft version** than the server. Lotus, Sunset and Breeze need **Minecraft 1.21.11**. See [Importing Maps](page:importing-maps).
 
-## Automatic weapons fire slowly
+## Fire doesn't continue when I hold left click
 
-Minecraft sends **one signal per left click**, so with left-click shooting automatic weapons fire at your click rate. For hold-to-fire, set `controls.fire-button: RIGHT` in `config.yml`. See [Controls](page:controls).
+Continuous fire needs you to aim at a block within **64 blocks**. When aiming at the sky, click instead. Check `controls.continuous-fire` and `controls.semi-auto-hold` ([Controls](page:controls)).
 
-## My screen "goes back" during bursts
+## I can't shoot or use abilities
 
-Fixed in **2.1**: recoil no longer moves the camera and is applied entirely to the bullet path. Update to 2.1. See [Weapons](page:weapons).
+You may be **detained**, **suppressed** or **jammed** (Lockdown, Thrash, ZERO/point, Steel Garden...), or piloting a drone. See the status table on [Agents](page:agents).
 
-## I can't use abilities or shoot
+## A player was removed from the game
 
-You may be **immobilized** (Lockdown or Thrash). See the status effects table on [Agents](page:agents).
+The AFK check removes a player who doesn't move for 90 s (`afk.kick-after`). A disconnected player has 3 minutes to come back (`reconnect.timeout`).
 
 ## Players lost their items after a crash
 
-Inventories saved during a game are stored in `plugins/Valocraft/playerdata/` and **returned on reconnect**. Temporary blocks (walls, spike) in `plugins/Valocraft/data/` are restored automatically.
+Inventories saved during a match are in `plugins/Valocraft/playerdata/` and **given back on reconnect**. Temporary blocks (walls, spike, abilities) are restored the next time the map world loads.
 
-## I updated and things look wrong
+## I updated and something is off
 
-- Remove the old plugin jar so that only `Valocraft-2.2.jar` remains in `plugins/`. See [Installation](page:installation).
-- Valocraft **1.x** is not compatible with 2.x.
-
-## Holding left click does not keep firing
-
-Continuous fire needs a block targeted within **64 blocks**. If you are aiming at the sky or no block is in range, click to fire a single shot. Check `controls.continuous-fire` and `controls.semi-auto-hold` in `config.yml`; see [Controls](page:controls).
+- Keep only `Valocraft-2.2.jar` in `plugins/`. See [Installation](page:installation).
+- Valocraft **1.x** isn't compatible with 2.x.
 
 ## Still stuck?
 
-Open an issue on this repository with your server version, the Valocraft version and the relevant console output.
+Open an issue on this repository with the server version, the Valocraft version and the relevant part of the console.

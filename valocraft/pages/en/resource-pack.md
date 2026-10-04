@@ -1,15 +1,17 @@
 # Resource Pack
 
 
-Valocraft uses the **HrdaValorant** resource pack (with a corrected Classic sound) plus the Valocraft weapon models. It is **embedded in the plugin jar**.
+Valocraft uses the **HrdaValorant** resource pack (fixed Classic sound) plus Valocraft's own models and textures (weapons, skins, smokes, scope, white flashes). It's **bundled in the plugin jar**.
 
-## How it works by default
+## Default behaviour
 
-1. On first start the pack is extracted to `plugins/Valocraft/resourcepack.zip`.
-2. It is **served on the Minecraft port itself** and sent to every player on join.
-3. The download link reuses the **address and port the player connected with**.
+1. On startup, the pack is extracted to `plugins/Valocraft/resourcepack.zip` (and replaced automatically when the plugin is updated).
+2. It's **served on the Minecraft port itself** and sent to each player on join.
+3. The download link reuses **the address and port the player connected with**.
 
-So there is **no extra port to open**, and it works on **Pterodactyl**. The pack is updated automatically when the plugin updates.
+No extra port to open, and it works on **Pterodactyl**.
+
+A player who declines the pack gets a message: without it, weapons, ability icons and scopes are invisible.
 
 ## Player commands
 
@@ -24,8 +26,8 @@ So there is **no extra port to open**, and it works on **Pterodactyl**. The pack
 |---|---|
 | `/vc pack send <player\|all>` | Send the pack to a player or everyone |
 | `/vc pack remove <player\|all>` | Remove the pack for a player or everyone |
-| `/vc pack info` | Show the mode and link |
-| `/vc pack reload` | Reload the pack after editing it |
+| `/vc pack info` | Shows the mode and link |
+| `/vc pack reload` | Reloads the pack after a change |
 
 ## Alternatives
 
@@ -38,6 +40,6 @@ Set in `config.yml`:
 
 ## Reading the console
 
-For each player, the console logs the **link offered** and the **client's response**, for example: `ACCEPTED`, `DECLINED`, `FAILED_DOWNLOAD`, `SUCCESSFULLY_LOADED`.
+For each player, the console shows the **offered link** and the **client's answer**, for example: `ACCEPTED`, `DECLINED`, `FAILED_DOWNLOAD`, `SUCCESSFULLY_LOADED`.
 
-See [Troubleshooting](page:troubleshooting) if the pack does not load.
+See [Troubleshooting](page:troubleshooting) if the pack doesn't load, and [Development](page:development) to regenerate the resources.

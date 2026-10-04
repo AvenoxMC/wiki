@@ -15,45 +15,39 @@ Toutes les armes ont un modèle 3D.
 | Snipers | Marshal, Operator, Outlaw |
 | Armes lourdes | Ares, Odin |
 
-Les armes et charges s'achètent dans la boutique pendant la phase d'achat (`F`, ou `/vc shop`).
+Les armes et charges s'achètent dans la boutique pendant la phase d'achat (`F`, ou `/vc shop`). Une arme trop chère peut être **demandée à un coéquipier** ([Déroulement du jeu](page:gameplay)).
 
 ## Mécaniques
 
 | Mécanique | Fonctionnement |
 |---|---|
-| **Tir** | Hitscan |
-| **Précision** | L'imprécision dépend du mouvement : elle augmente en déplacement ou en l'air, et change en position accroupie. S'arrêter (ou s'accroupir) avant de tirer donne un tir précis ; courir ou sauter le rend imprécis. |
-| **Recul** | Montée puis balayage latéral. Entièrement intégré à la trajectoire des balles. |
+| **Tir** | Hitscan, avec **compensation de latence** (jusqu'à 200 ms) |
+| **Précision** | L'imprécision augmente en déplacement ou en l'air et change accroupi. S'arrêter (ou s'accroupir) avant de tirer donne un tir précis. |
+| **Recul** | Montée puis balayage latéral, entièrement intégré à la trajectoire des balles (la vue ne bouge pas). |
 | **Dégâts** | Tête / corps / jambes, avec paliers selon la portée |
-| **Pénétration** | Les balles traversent les murs |
-| **Rechargement** | Touche **Q**. La progression s'affiche sur la barre d'XP. |
-| **Visée / lunette** | Clic droit maintenu. Lunettes sur Operator, Marshal et Outlaw. |
-| **Fusils à pompe** | Armes de courte portée (Bucky, Judge) |
+| **Pénétration** | Les balles traversent les murs ; elles détruisent l'**utilitaire ennemi** touché (tourelle, caméra, pièges...) |
+| **Rechargement** | Touche **Q**. Progression sur la barre d'XP. |
+| **Visée / lunette** | Clic droit maintenu. Lunettes sur Operator, Marshal et Outlaw. Pas de lunette quand on est flashé. |
+| **Fusils à pompe** | Courte portée (Bucky, Judge) |
 | **Couteau** | **x3 dégâts** dans le dos |
 
-## Recul et caméra
+## Tir en maintenant le clic
 
-Le recul **ne déplace jamais la vue du joueur**. Le serveur ne peut imposer qu'une orientation absolue, ce qui faisait « revenir » l'écran en arrière pendant les rafales. Dans la 2.1, tout le recul est appliqué à la **trajectoire des balles**.
+Maintenir le clic gauche en visant un bloc à moins de 64 blocs fait tirer l'arme à sa cadence réelle. Aucun bloc n'est abîmé et l'animation du bras est masquée. Les semi-automatiques tirent à leur cadence maximale tant que le clic est maintenu. Voir [Contrôles](page:controls).
 
-## Tir en maintenant le clic (2.2)
+## Lunettes
 
-Maintenir le clic gauche en visant un bloc à moins de 64 blocs fait tirer l'arme à sa cadence réelle. Aucun bloc n'est miné ou abîmé et l'animation du bras est masquée. Les armes semi-automatiques tirent à leur cadence maximale tant que le clic est maintenu. Sans bloc visé à portée, un clic tire une seule balle. Voir [Contrôles](page:controls) et [Configuration](page:configuration).
+L'Operator, le Marshal, l'Outlaw et l'ultime de Chamber (Tour de Force) utilisent une lunette plein écran 16:9 : lentille ronde nette, noir autour, réticule fin et point rouge. Elle est portée par le casque et ne clignote pas.
 
 ## Skins
 
-La boutique du lobby propose six collections pour les 18 armes : Prime, Reaver, Glitchpop, Ion, Elderflame et Oni. Les skins coûtent de 1 000 à 2 000 Radianites, s'achètent et s'équipent arme par arme, et restent sur l'arme lorsqu'elle est lâchée par son propriétaire. Voir [Lobby et matchmaking](page:lobby).
-
-## Lunettes des snipers
-
-L'Operator, le Marshal et l'Outlaw utilisent une lunette plein écran au format 16:9, avec lentille circulaire nette, noir autour, réticule fin et point rouge. Elle ne clignote plus pendant les mises à jour de l'inventaire.
+La boutique du lobby propose six collections pour les 18 armes : Prime, Reaver, Glitchpop, Ion, Elderflame et Oni, ainsi que 14 couteaux. Les skins s'achètent et s'équipent arme par arme ; une arme ramassée garde le skin de son propriétaire. Voir [Progression et cosmétiques](page:progression).
 
 ## Modèles
 
-- **Pack HrdaValorant** : Classic, Ghost, Sheriff, Spectre, Vandal, Ares, Operator, couteau (et ses skins `model-data` 2 à 15), boucliers.
-- **Modèles Valocraft**, créés pour le projet (`assets/valocraft` du pack) : Shorty, Frenzy, Stinger, Bucky, Judge, Bulldog, Guardian, Phantom, Marshal, Outlaw, Odin. Ils utilisent le composant `item_model` (`item-model: valocraft:<arme>`, automatique).
-
-Les sources et outils des modèles sont décrits dans [Développement](page:development).
+- **Pack HrdaValorant** : Classic, Ghost, Sheriff, Spectre, Vandal, Ares, Operator, couteaux, boucliers.
+- **Modèles Valocraft**, créés pour le projet : Shorty, Frenzy, Stinger, Bucky, Judge, Bulldog, Guardian, Phantom, Marshal, Outlaw, Odin (composant `item_model`).
 
 ## Réglages
 
-Toutes les statistiques (dégâts, cadence, imprécision, recul, pénétration, zoom...) sont dans `weapons.yml`, commentées en tête du fichier. Recharger avec `/vc reload`. Pour tester sans risque, utiliser le [Stand de tir](page:practice-range).
+Toutes les statistiques (dégâts, cadence, imprécision, recul, pénétration, zoom...) sont dans `weapons.yml`, commentées en tête du fichier. Recharger avec `/vc reload`. Pour tester, utiliser le [Stand de tir](page:practice-range).
