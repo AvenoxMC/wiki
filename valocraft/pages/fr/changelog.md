@@ -1,7 +1,6 @@
 # Journal des modifications
 
 Toutes les évolutions de Valocraft, une reproduction de Valorant sous forme de plugin Paper (API 1.21.4, Java 21).
-Version anglaise : [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
